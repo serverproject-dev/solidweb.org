@@ -1,7 +1,5 @@
 d2024-05-21
 - - - -
-# solidweb_org_config
-
 `/var/www/solidweb.org$ less config.json`
 ```
 {
