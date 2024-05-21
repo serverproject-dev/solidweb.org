@@ -90,4 +90,6 @@ root /var/www/solidweb.org; #webroot
 }
 ```
 `/root/archiv$ less pm4.sh`
-`/usr/bin/solid start --config-file /var/www/solidweb.org/config.json`
+```
+/usr/bin/solid start --config-file /var/www/solidweb.org/config.json
+```
