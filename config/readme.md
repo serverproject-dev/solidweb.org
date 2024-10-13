@@ -1,4 +1,4 @@
-d2024-05-21
+d2024-10-13
 - - - -
 `/var/www/solidweb.org$ less config.json`
 ```
@@ -11,8 +11,8 @@ d2024-05-21
   "configPath": "./config",
   "configFile": "./config.json",
   "dbPath": "./.db",
-  "sslKey": "/etc/letsencrypt/archive/solidweb.org/privkey13.pem",
-  "sslCert": "/etc/letsencrypt/archive/solidweb.org/fullchain13.pem",
+  "sslKey": "/etc/letsencrypt/archive/solidweb.org/privkey15.pem",
+  "sslCert": "/etc/letsencrypt/archive/solidweb.org/fullchain15.pem",
   "multiuser": true,
   "useEmail": true,
   "corsProxy": false,
@@ -53,8 +53,8 @@ server {
   access_log  /var/log/nginx/solid_ssl_access.log;
   error_log   /var/log/nginx/solid_ssl_error.log;
 
-ssl_certificate /etc/letsencrypt/archive/solidweb.org/fullchain13.pem;
-ssl_certificate_key /etc/letsencrypt/archive/solidweb.org/privkey13.pem;
+ssl_certificate /etc/letsencrypt/archive/solidweb.org/fullchain15.pem;
+ssl_certificate_key /etc/letsencrypt/archive/solidweb.org/privkey15.pem;
 
 root /var/www/solidweb.org; #webroot
 
@@ -85,7 +85,9 @@ root /var/www/solidweb.org; #webroot
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
   }
+
 }
+
 ```
 `/root/archiv$ less pm4.sh`
 ```
