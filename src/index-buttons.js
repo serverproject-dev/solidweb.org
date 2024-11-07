@@ -4,13 +4,16 @@ function register() {
     alert(2); window.location.href = "/register"; 
 }
 document.addEventListener('DOMContentLoaded', async function() {
-    if (!UI.authn.currentUser()) await UI.authn.checkUser();
-    let user = UI.authn.currentUser();
+    const authn = UI.authn
+    const authSession = UI.authn.authSession
+
+    if (!authn.currentUser()) await authn.checkUser();
+    let user = authn.currentUser();
 
     // IF LOGGED IN: SET SolidServerRootRedirectLink. LOGOUT
     if( user ) {
         window.localStorage.setItem(keyname, user.uri);
-        await UI.authn.authSession.logout();
+        await authSession.logout();
     }
     else {
         let webId = window.localStorage.getItem(keyname);
@@ -27,15 +30,15 @@ document.addEventListener('DOMContentLoaded', async function() {
         //     HIDE LOGIN BUTTON, ADD REGISTER BUTTON
         else {
         let loginArea = document.getElementById('loginStatusArea');
-        let html = `<input type="button" onclick="window.location.href='/register'" value="Register to get a Pod" class="register-button" style="padding: 1em; border-radius:0.2em; font-size: 100%;margin: 0.75em 0 0.75em 0.5em !important; padding: 0.5em !important;background-color: #efe;">`
+        let html = `<input type="button" onclick="window.location.href='/register'" value="Sign up" class="register-button" style="padding: 1em; border-radius:0.2em; font-size: 100%;margin: 0.75em 0 0.75em 0.5em !important; padding: 0.5em !important;background-color: #efe;">`
         let span = document.createElement("span")
         span.innerHTML = html
         loginArea.appendChild(span);
-        loginArea.appendChild(UI.authn.loginStatusBox(document, null, {}))
+        loginArea.appendChild(UI.login.loginStatusBox(document, null, {}))
         const logInButton = loginArea.querySelectorAll('input')[1];
-        logInButton.value = "Log in to see your WebID";
+        logInButton.value = "Log in";
         const signUpButton = loginArea.querySelectorAll('input')[2];
         signUpButton.style.display = "none";
         }                    
     }
-}) 
+})
